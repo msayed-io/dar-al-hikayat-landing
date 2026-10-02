@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دَارُ الحِكَايَاتِ — محرابٌ مقدّس لفنّانة السرد</title>
+<meta name="description" content="دَارُ الحِكَايَاتِ: تطبيق الكتابة الروحاني للكاتبة رحمه السيد موافي — محرر أدبي حرفي بخطوط ثمانية، مواقيت الصلاة في 58 مدينة، تصدير PDF وWord بقالب حرفي، ومساعد أدبي ذكي.">
+<meta property="og:title" content="دَارُ الحِكَايَاتِ — محرابٌ مقدّس لفنّانة السرد">
+<meta property="og:description" content="حيث تُولَد الحكايات قبل أن تنطق بها الأقلام. تطبيق الكتابة الروحاني — أندرويد وPWA.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EAE6D2">
+<link rel="icon" href="assets/img/logo-light.png">
+<style>
+/* ————— الخطوط الثمانية ————— */
+@font-face { font-family:"Thmanyah Serif Display"; src:url("assets/fonts/thmanyahserifdisplay-Black.woff2") format("woff2"); font-weight:900; font-display:swap; }
+@font-face { font-family:"Thmanyah Serif Display"; src:url("assets/fonts/thmanyahserifdisplay-Bold.woff2") format("woff2"); font-weight:700; font-display:swap; }
+@font-face { font-family:"Thmanyah Serif Text"; src:url("assets/fonts/thmanyahseriftext-Regular.woff2") format("woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Thmanyah Serif Text"; src:url("assets/fonts/thmanyahseriftext-Medium.woff2") format("woff2"); font-weight:500; font-display:swap; }
+@font-face { font-family:"Thmanyah Sans"; src:url("assets/fonts/thmanyahsans-Regular.woff2") format("woff2"); font-weight:400; font-display:swap; }
+@font-face { font-family:"Thmanyah Sans"; src:url("assets/fonts/thmanyahsans-Bold.woff2") format("woff2"); font-weight:700; font-display:swap; }
+
+:root{
+  --parchment:#EAE6D2;
+  --parchment-bright:#F3F0E0;
+  --parchment-deep:#E0DBC2;
+  --ink:#121A1B;
+  --ink-soft:#3B4445;
+  --slate:#4A5556;
+  --gold:#A7AA63;
+  --gold-deep:#8B8E4B;
+  --night:#111718;
+  --night-raise:#171F21;
+  --night-text:#E2DFD2;
+  --night-gold:#9FA365;
+  --ease-sacred:cubic-bezier(0.32,0.72,0,1);
+  --serif-display:"Thmanyah Serif Display",serif;
+  --serif-text:"Thmanyah Serif Text",serif;
+  --sans:"Thmanyah Sans",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--serif-text);
+  background:var(--parchment);
+  color:var(--ink);
+  line-height:1.9;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:var(--ink)}
+
+/* ————— الطبقة الحية: ورق ————— */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+}
+
+/* ————— الروّاد (Nav) ————— */
+nav{
+  position:fixed;top:1.4rem;right:50%;transform:translateX(50%);z-index:60;
+  display:flex;align-items:center;gap:.4rem;
+  background:rgba(243,240,224,.72);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(18,26,27,.08);
+  border-radius:999px;padding:.45rem .6rem .45rem 1.3rem;
+  box-shadow:0 14px 40px -18px rgba(18,26,27,.25), inset 0 1px 0 rgba(255,255,255,.5);
+}
+nav .brand{display:flex;align-items:center;gap:.55rem;padding:.15rem .9rem .15rem .4rem;font-family:var(--sans);font-weight:700;font-size:.95rem;letter-spacing:.01em;white-space:nowrap}
+nav .brand img{width:2rem;height:2rem;object-fit:contain}
+nav a.lnk{font-family:var(--sans);font-size:.82rem;color:var(--slate);text-decoration:none;padding:.5rem .85rem;border-radius:999px;transition:background .4s var(--ease-sacred),color .4s var(--ease-sacred)}
+nav a.lnk:hover{background:rgba(167,170,99,.16);color:var(--ink)}
+nav .cta-mini{font-family:var(--sans);font-weight:700;font-size:.82rem;text-decoration:none;color:var(--parchment-bright);background:var(--ink);padding:.55rem 1.15rem;border-radius:999px;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;transition:transform .35s var(--ease-sacred)}
+nav .cta-mini:active{transform:scale(.97)}
+@media(max-width:760px){nav a.lnk{display:none}nav{gap:.15rem;padding:.35rem .45rem .35rem .8rem}nav .brand{font-size:.85rem;padding:.1rem .6rem .1rem .3rem}nav .cta-mini{font-size:.75rem;padding:.5rem .9rem}}
+
+/* ————— التمويج العام ————— */
+.reveal{opacity:0;transform:translateY(2.4rem);filter:blur(6px);transition:opacity .9s var(--ease-sacred),transform .9s var(--ease-sacred),filter .9s var(--ease-sacred)}
+.reveal.in{opacity:1;transform:translateY(0);filter:blur(0)}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;filter:none;transition:none}
+  .float{animation:none}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* ————— البسطة (Hero) ————— */
+.hero{
+  min-height:100dvh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;
+  gap:3rem;max-width:1280px;margin:0 auto;padding:9rem 3rem 5rem;
+  position:relative;
+}
+.hero-copy{position:relative;z-index:2}
+.kicker{font-family:var(--sans);font-size:.78rem;font-weight:700;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.6rem}
+.kicker::before{content:"";width:2.2rem;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:var(--serif-display);font-weight:900;
+  font-size:clamp(3rem,7.2vw,6.2rem);line-height:1.22;
+  letter-spacing:-0.01em;margin-bottom:1.6rem;
+}
+.hero h1 .maqam{position:relative;display:inline-block;color:var(--gold-deep)}
+.hero h1 .maqam svg{position:absolute;bottom:-.28em;right:0;width:100%;height:.32em}
+.hero-sub{font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--slate);max-width:34rem;margin-bottom:2.4rem;line-height:2.1}
+.hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;
+  color:var(--parchment-bright);background:var(--ink);
+  padding:.95rem 1.4rem .95rem 1.1rem;border-radius:999px;
+  display:inline-flex;align-items:center;gap:.8rem;
+  box-shadow:0 18px 40px -16px rgba(18,26,27,.5), inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .4s var(--ease-sacred),box-shadow .4s var(--ease-sacred);
+}
+.btn-primary .orb{width:1.75rem;height:1.75rem;border-radius:50%;background:rgba(234,230,210,.14);display:grid;place-items:center;font-size:.8rem;transition:transform .4s var(--ease-sacred)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-primary:hover .orb{transform:translateX(-3px) scale(1.06)}
+.btn-primary:active{transform:scale(.98)}
+.btn-ghost{
+  font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;color:var(--ink);
+  border:1px solid rgba(18,26,27,.18);padding:.95rem 1.5rem;border-radius:999px;
+  transition:background .4s var(--ease-sacred),border-color .4s var(--ease-sacred),transform .4s var(--ease-sacred);
+}
+.btn-ghost:hover{background:rgba(167,170,99,.14);border-color:var(--gold)}
+.hero-meta{font-family:var(--sans);font-size:.78rem;color:var(--slate);margin-top:2.6rem;display:flex;gap:1.8rem;flex-wrap:wrap}
+.hero-meta span{display:flex;align-items:center;gap:.45rem}
+.hero-meta i{width:.42rem;height:.42rem;border-radius:50%;background:var(--gold);display:inline-block}
+
+/* ————— الهاتف الحي ————— */
+.hero-visual{position:relative;display:flex;justify-content:center;perspective:1400px}
+.phone{
+  width:min(320px,82vw);border-radius:3rem;padding:.7rem;
+  background:linear-gradient(160deg,rgba(18,26,27,.92),rgba(74,85,86,.85));
+  box-shadow:0 40px 90px -30px rgba(18,26,27,.55),inset 0 1px 1px rgba(255,255,255,.22);
+  position:relative;transform:rotate(-2.2deg);
+  transition:transform 1s var(--ease-sacred);
+}
+.phone:hover{transform:rotate(0deg) translateY(-6px)}
+.phone .screen{border-radius:calc(3rem - .7rem);overflow:hidden;background:var(--parchment);border:1px solid rgba(255,255,255,.12)}
+.phone .screen img{display:block;width:100%;height:auto}
+.phone .notch{position:absolute;top:1.15rem;right:50%;transform:translateX(50%);width:7.2rem;height:1.35rem;background:rgba(18,26,27,.92);border-radius:999px;z-index:3}
+.float{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.glow-veil{
+  position:absolute;width:34rem;height:34rem;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,rgba(167,170,99,.28),transparent 62%);
+  top:6%;right:-16%;filter:blur(6px);
+}
+.hero-calligraphy{
+  position:absolute;bottom:2rem;left:-1rem;z-index:1;
+  font-family:var(--serif-display);font-weight:900;font-size:clamp(4rem,9vw,8rem);
+  color:transparent;-webkit-text-stroke:1px rgba(18,26,27,.13);line-height:1;
+  user-select:none;pointer-events:none;
+}
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;padding:8.5rem 1.4rem 4rem;gap:3.4rem;text-align:center}
+  .hero-sub{margin-inline:auto}
+  .hero-actions,.hero-meta{justify-content:center}
+  .hero-calligraphy{display:none}
+  .kicker::before{display:none}
+}
+
+/* ————— الأساسيات المشتركة ————— */
+section{position:relative}
+.wrap{max-width:1280px;margin:0 auto;padding:7.5rem 3rem}
+@media(max-width:760px){.wrap{padding:5rem 1.4rem}}
+.sec-head{max-width:44rem;margin-bottom:4rem}
+.sec-head h2{font-family:var(--serif-display);font-weight:900;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.35;margin-top:1rem}
+
+/* ————— الفلسفة: ليل الهمس ————— */
+.philosophy{
+  background:var(--night);color:var(--night-text);
+  padding:9rem 0;overflow:hidden;
+}
+.philosophy .wrap{padding-top:2rem;padding-bottom:2rem}
+.philosophy blockquote{
+  font-family:var(--serif-display);font-weight:700;
+  font-size:clamp(1.7rem,3.6vw,3rem);line-height:2;text-align:center;
+  max-width:56rem;margin:0 auto;position:relative;
+}
+.philosophy blockquote .taqwa{color:var(--night-gold)}
+.philosophy .noor{
+  position:absolute;width:46rem;height:46rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(159,163,101,.14),transparent 60%);
+  top:-12rem;right:50%;transform:translateX(50%);pointer-events:none;
+}
+.philosophy .attrib{font-family:var(--sans);font-size:.85rem;color:rgba(226,223,210,.55);text-align:center;margin-top:2.4rem}
+
+/* ————— المميزات: خزانة ————— */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1.3rem}
+.card{
+  border-radius:1.9rem;padding:1.5rem;
+  background:rgba(255,255,255,.38);
+  border:1px solid rgba(18,26,27,.07);
+  box-shadow:0 22px 50px -30px rgba(18,26,27,.22);
+  transition:transform .55s var(--ease-sacred),box-shadow .55s var(--ease-sacred);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 32px 60px -28px rgba(18,26,27,.3)}
+.card .inner{background:rgba(243,240,224,.6);border-radius:calc(1.9rem - .55rem);padding:1.9rem 1.7rem;height:100%;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
+.card h3{font-family:var(--serif-display);font-weight:700;font-size:1.32rem;margin:.9rem 0 .55rem}
+.card p{font-family:var(--sans);font-size:.9rem;color:var(--slate);line-height:1.95}
+.card .num{
+  font-family:var(--sans);font-weight:700;font-size:.68rem;letter-spacing:.14em;color:var(--gold-deep);
+  display:inline-block;padding:.28rem .75rem;border-radius:999px;background:rgba(167,170,99,.16);
+}
+.c-span7{grid-column:span 7}.c-span5{grid-column:span 5}
+.c-span4{grid-column:span 4}.c-span8{grid-column:span 8}
+.c-span6{grid-column:span 6}
+@media(max-width:960px){.bento>*{grid-column:span 12!important}}
+
+/* بطاقة الثيمات */
+.themes-live{display:flex;gap:.7rem;margin-top:1.1rem}
+.theme-chip{flex:1;border-radius:1rem;padding:.85rem .7rem .7rem;border:1px solid rgba(18,26,27,.1);font-family:var(--sans);font-size:.68rem;text-align:center;transition:transform .4s var(--ease-sacred)}
+.theme-chip:hover{transform:translateY(-4px)}
+.theme-chip .sw{width:100%;height:2.4rem;border-radius:.65rem;margin-bottom:.45rem;border:1px solid rgba(18,26,27,.08)}
+
+/* بطاقة المواقيت */
+.prayer-card .rows{display:flex;flex-direction:column;gap:.45rem;margin-top:1rem;font-family:var(--sans);font-size:.8rem}
+.prayer-card .row{display:flex;justify-content:space-between;padding:.55rem .95rem;border-radius:.8rem;background:rgba(18,26,27,.045)}
+.prayer-card .row.now{background:var(--ink);color:var(--parchment-bright);font-weight:700}
+.prayer-card .row b{font-weight:400;color:inherit}
+
+/* بطاقة الخطوط */
+.specimen{margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
+.specimen .sp{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;border-bottom:1px dashed rgba(18,26,27,.12);padding-bottom:.5rem}
+.specimen .sp .ar{font-size:1.5rem;line-height:1.6}
+.specimen .sp .lat{font-family:var(--sans);font-size:.68rem;color:var(--slate);white-space:nowrap}
+.sp-display{font-family:var(--serif-display);font-weight:900}
+.sp-text{font-family:var(--serif-text)}
+.sp-sans{font-family:var(--sans)}
+
+/* ————— معرض اللقطات ————— */
+.gallery{background:var(--parchment-deep);padding:8rem 0}
+.shots{display:flex;justify-content:center;align-items:flex-start;gap:2.2rem;flex-wrap:wrap}
+.shot{width:min(270px,78vw);border-radius:2.4rem;padding:.6rem;background:rgba(18,26,27,.9);box-shadow:0 34px 70px -30px rgba(18,26,27,.5),inset 0 1px 1px rgba(255,255,255,.16);transition:transform .6s var(--ease-sacred)}
+.shot:hover{transform:translateY(-10px) scale(1.02)}
+.shot img{display:block;width:100%;border-radius:calc(2.4rem - .6rem)}
+.shot:nth-child(2){margin-top:3.2rem}
+.shot:nth-child(3){margin-top:6.4rem}
+.shot figcaption{font-family:var(--sans);font-size:.78rem;color:rgba(234,230,210,.75);text-align:center;padding:.8rem .3rem .4rem}
+@media(max-width:760px){.shot:nth-child(2),.shot:nth-child(3){margin-top:0}}
+
+/* ————— الدعوة الأخيرة ————— */
+.final{background:var(--night);color:var(--night-text);padding:9.5rem 0;text-align:center;position:relative;overflow:hidden}
+.final .wrap{display:flex;flex-direction:column;align-items:center}
+.final img.mark{width:6.5rem;height:6.5rem;object-fit:contain;margin-bottom:2rem;filter:drop-shadow(0 10px 30px rgba(159,163,101,.3))}
+.final h2{font-family:var(--serif-display);font-weight:900;font-size:clamp(2.2rem,5vw,4rem);line-height:1.5;margin-bottom:1.2rem}
+.final p{font-family:var(--sans);color:rgba(226,223,210,.65);max-width:34rem;margin-bottom:2.8rem}
+.final .btn-primary{background:var(--night-gold);color:var(--night);box-shadow:0 20px 50px -18px rgba(159,163,101,.55),inset 0 1px 0 rgba(255,255,255,.3)}
+.final .btn-ghost{color:var(--night-text);border-color:rgba(226,223,210,.25)}
+.final .btn-ghost:hover{background:rgba(226,223,210,.08);border-color:var(--night-gold)}
+.final .noor2{position:absolute;width:52rem;height:52rem;border-radius:50%;background:radial-gradient(circle,rgba(159,163,101,.12),transparent 62%);bottom:-24rem;right:50%;transform:translateX(50%);pointer-events:none}
+
+footer{background:var(--night);color:rgba(226,223,210,.5);border-top:1px solid rgba(226,223,210,.08);padding:2.4rem 0 2.8rem}
+footer .wrap{padding-top:0;padding-bottom:0;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-family:var(--sans);font-size:.8rem}
+footer a{color:rgba(226,223,210,.75);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--night-gold)}
+
+/* التركيز الظاهر */
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:999px}
+</style>
+</head>
+<body>
+
+<nav aria-label="التنقل الرئيسي">
+  <span class="brand"><img src="assets/img/logo-light.png" alt="شعار دَارِ الحِكَايَاتِ">دَارُ الحِكَايَاتِ</span>
+  <a class="lnk" href="#philosophy">الفلسفة</a>
+  <a class="lnk" href="#features">المميزات</a>
+  <a class="lnk" href="#gallery">لقطات</a>
+  <a class="cta-mini" href="https://github.com/msayed-io/Dar-Al-Hikayat" target="_blank" rel="noopener">حمّل التطبيق</a>
+</nav>
+
+<!-- ═══ البسطة ═══ -->
+<header class="hero">
+  <div class="glow-veil" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <span class="kicker">تطبيق الكتابة الروحاني · أندرويد وPWA</span>
+    <h1>حيث تُولَد الحكايات <span class="maqam">قبل أن تنطق بها الأقلام<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".55"/></svg></span></h1>
+    <p class="hero-sub">مِحرابٌ مقدّس لفنّانة السرد — مِنصّة الكتابة الخاصة بالكاتبة <strong>رحمه السيد موافي</strong>؛ محرّرٌ أدبيّ حرفيّ بخطوط ثمانية، يتقرّب فيها القلم مع مواقيت الصلاة، وتُحفَظ الحكايات بخصوصيةٍ تامّة.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://github.com/msayed-io/Dar-Al-Hikayat" target="_blank" rel="noopener">حمّل التطبيق<span class="orb">↓</span></a>
+      <a class="btn-ghost" href="#features">اكتشف المحراب</a>
+    </div>
+    <div class="hero-meta">
+      <span><i></i>58 مدينة لمواقيت الصلاة</span>
+      <span><i></i>خطوط ثمانية الرسمية</span>
+      <span><i></i>تصدير PDF وWord حرفيّ</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="phone float">
+      <div class="notch" aria-hidden="true"></div>
+      <div class="screen"><img src="assets/img/shot-editor.png" alt="محرر دَارِ الحِكَايَاتِ بوضع الكتابة الغامر" loading="eager"></div>
+    </div>
+  </div>
+  <div class="hero-calligraphy" aria-hidden="true">الحكايات</div>
+</header>
+
+<!-- ═══ الفلسفة ═══ -->
+<section class="philosophy" id="philosophy">
+  <div class="noor" aria-hidden="true"></div>
+  <div class="wrap">
+    <blockquote class="reveal">«ليست منصّةً تُكتب فيها النصوص فقط؛ إنها <span class="taqwa">مِحرابٌ</span> تتآلف فيه الروح مع الحرف، فتُولَد الحكاية من سُكينة المكان قبل أن تُولَد من الفكرة.»</blockquote>
+    <p class="attrib reveal">— من فلسفة دَارِ الحِكَايَاتِ</p>
+  </div>
+</section>
+
+<!-- ═══ المميزات ═══ -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">أركان الدار</span>
+      <h2>كلُّ ما يحتاجه القلم… في بيتٍ واحد</h2>
+    </div>
+    <div class="bento">
+      <article class="card c-span7 reveal">
+        <div class="inner">
+          <span class="num">المِحراب</span>
+          <h3>محرّر أدبيّ بقالب النشر الحرفيّ</h3>
+          <p>كتابةٌ بتشكيلٍ كامل عبر معالجة تشكيل مخصّصة، وضبطٌ للسطر والحرف والورق كأنك تكتب على رقّ أصيل — مع تراجع وإعادة وحفظٍ تلقائيّ لا يُفقد حرفاً واحداً.</p>
+        </div>
+      </article>
+      <article class="card c-span5 reveal">
+        <div class="inner">
+          <span class="num">الأجواء</span>
+          <h3>ثلاثة ثيمات ثلاث حالات روحية</h3>
+          <p>من رقّ «كلاسيكيّ ملكيّ» الصافي، إلى ظلام «همس الليالي» الدافئ، إلى سواد أنيقٍ بلا زوائد.</p>
+          <div class="themes-live">
+            <div class="theme-chip" style="background:#EAE6D2;color:#121A1B"><div class="sw" style="background:#EAE6D2;border-color:#A7AA63"></div>كلاسيكيّ ملكيّ</div>
+            <div class="theme-chip" style="background:#111718;color:#E2DFD2"><div class="sw" style="background:#111718"></div>همس الليالي</div>
+            <div class="theme-chip" style="background:#000;color:#F5F5F5"><div class="sw" style="background:#000"></div>داكن صافٍ</div>
+          </div>
+        </div>
+      </article>
+      <article class="card c-span5 prayer-card reveal">
+        <div class="inner">
+          <span class="num">المِحراب الصّلاة</span>
+          <h3>القلم يتوقف حيث يتوقف الأذان</h3>
+          <p>مواقيت صلاة دقيقة في <b>58 مدينة</b> بـ5 طرق حسابٍ معتمدة، مع منبّهاتٍ أصلية تعمل دون اتصال.</p>
+          <div class="rows" aria-hidden="true">
+            <div class="row now"><b>الفجر</b><span>5:22 ص · الآن</span></div>
+            <div class="row"><b>الشروق</b><span>6:49 ص</span></div>
+            <div class="row"><b>الظهر</b><span>12:45 م</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="card c-span7 reveal">
+        <div class="inner">
+          <span class="num">النشر</span>
+          <h3>من المسوّدة إلى الكتاب: PDF وWord</h3>
+          <p>تصديرٌ بقالب الإنتاج الحرفيّ — صفحة عنوان، وفهرس، وتزيين نصّيّ بمواصفات النشر الحقيقية. ملفّات Word بصيغة docx قابلة للتحرير، جاهزة للمطابع أو المدقّقين.</p>
+        </div>
+      </article>
+      <article class="card c-span4 reveal">
+        <div class="inner">
+          <span class="num">الخزينة</span>
+          <h3>خصوصيةٌ بأمانٍ بيومتريّ</h3>
+          <p>حكاياتك تُخزَّن محليّاً على جهازك، وتُقفل ببصمتك أو بوجهك. لا سحابة، لا رؤية مسبقة — الكلمة مِلكُ قلمها.</p>
+        </div>
+      </article>
+      <article class="card c-span8 reveal">
+        <div class="inner">
+          <span class="num">الرفيق الرقميّ</span>
+          <h3>مساعد أدبيّ ذكيّ لا ينتحل قلمك</h3>
+          <p>وكيل سرديّ مبنيّ على Gemini يقرأ أسلوبك ويقترح تطوير المشاهد والحوارات، مع «محركّ تبديد الحكايات» الذي يمسح ما انتهيت منه بهدوء. أسئلة إبداعية، لا إنشاء بديل — فالكاتب أنت.</p>
+        </div>
+      </article>
+      <article class="card c-span6 reveal">
+        <div class="inner">
+          <span class="num">اليد</span>
+          <h3>كتابة يدويةٍ بممحاةٍ حقيقية</h3>
+          <p>خطّ بخطّك على الشاشة، وممحاة تقريب تَمحو الحرف لا السطر — لتوقيع الحكاية بحضورك.</p>
+        </div>
+      </article>
+      <article class="card c-span6 reveal">
+        <div class="inner">
+          <span class="num">الخطوط</span>
+          <h3>خطوط ثمانية في جيبك</h3>
+          <div class="specimen" aria-hidden="true">
+            <div class="sp"><span class="ar sp-display">الحِكايات</span><span class="lat">Serif Display · Black</span></div>
+            <div class="sp"><span class="ar sp-text">الحِكايات</span><span class="lat">Serif Text · Regular</span></div>
+            <div class="sp"><span class="ar sp-sans" style="font-weight:700">الحِكايات</span><span class="lat">Sans · Bold</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ اللقطات ═══ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-inline:auto">
+      <span class="kicker" style="justify-content:center">من داخل الدار</span>
+      <h2>شاهدها بعينيك</h2>
+    </div>
+    <div class="shots">
+      <figure class="shot reveal"><img src="assets/img/shot-night.png" alt="وضع همس الليالي الليلي" loading="lazy"><figcaption>همس الليالي — الكتابة في جوف الليل</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/img/shot-editor.png" alt="وضع الكتابة الغامر" loading="lazy"><figcaption>وضع الكتابة الغامر — لا شيء سوى الكلمة</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/img/shot-prayer.png" alt="صفحة المحراب ومواقيت الصلاة" loading="lazy"><figcaption>المِحراب — مواقيت الصلاة والسكينة</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ الدعوة الأخيرة ═══ -->
+<section class="final">
+  <div class="noor2" aria-hidden="true"></div>
+  <div class="wrap">
+    <img class="mark reveal" src="assets/img/logo-dark.png" alt="">
+    <h2 class="reveal">ابدأ حكايتك الليلة<br>قبل أن يشتاق القلم</h2>
+    <p class="reveal">مجاني، مفتوح المصدر، يعمل دون اتصال — على أندرويد وفي متصفّحك مباشرة.</p>
+    <div class="hero-actions reveal" style="justify-content:center">
+      <a class="btn-primary" href="https://github.com/msayed-io/Dar-Al-Hikayat" target="_blank" rel="noopener">حمّل التطبيق<span class="orb">↓</span></a>
+      <a class="btn-ghost" href="https://github.com/msayed-io/Dar-Al-Hikayat" target="_blank" rel="noopener">المستودع على GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>دَارُ الحِكَايَاتِ · محرابٌ مقدّس لفنّانة السرد</span>
+    <span>الكاتبة رحمه السيد موافي · <a href="https://github.com/msayed-io/Dar-Al-Hikayat" target="_blank" rel="noopener">com.daralhikayat.app</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const io = new IntersectionObserver((entries)=>{
+    for (const e of entries){
+      if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    }
+  },{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".reveal").forEach((el,i)=>{
+    el.style.transitionDelay = (i % 3) * 90 + "ms";
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
