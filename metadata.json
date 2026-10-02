@@ -1,0 +1,6 @@
+{
+  "name": "Dar Al-Hikayat",
+  "description": "تطبيق الكتابة الروحاني للكاتبة رحمه السيد موافي — محرابٌ مقدّس لفنّانة السرد",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
